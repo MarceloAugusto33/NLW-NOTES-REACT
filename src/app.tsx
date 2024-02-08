@@ -1,4 +1,4 @@
-import { ChangeEvent, ChangeEventHandler, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import logo from './assets/logonlw.svg'
 import { NewNoteCard } from './components/new-note-card'
 import { NoteCard } from './components/note-card'
@@ -37,13 +37,13 @@ export function App() {
         localStorage.setItem('@nlw-notes', JSON.stringify(notesArray))
     }
 
-    function onNoteDeleted(id: string){
+    function onNoteDeleted(id: string) {
         const notesArray = notes.filter(note => {
             return note.id !== id
         })
 
         setNotes(notesArray)
-        
+
         localStorage.setItem('@nlw-notes', JSON.stringify(notesArray))
     }
 
@@ -76,7 +76,7 @@ export function App() {
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-[250px] gap-6'>
                 <NewNoteCard onNoteCreated={onNoteCreated} />
                 {filteredNotes.map(note => {
-                    return <NoteCard note={note} key={note.id} onNoteDeleted={onNoteDeleted}/>
+                    return <NoteCard note={note} key={note.id} onNoteDeleted={onNoteDeleted} />
                 })}
             </div>
 

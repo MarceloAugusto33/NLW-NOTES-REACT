@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
-import { Search, X } from 'lucide-react'
+import { X } from 'lucide-react'
 import { toast } from 'sonner'
 
 interface newNoteCardProps {
@@ -10,7 +10,6 @@ interface newNoteCardProps {
 let speechRecognition: SpeechRecognition | null = null
 
 export function NewNoteCard({ onNoteCreated }: newNoteCardProps) {
-
     const [shouldShowOnboarding, setShouldShowOnboarding] = useState(true)
     const [content, setContent] = useState('')
     const [isRecording, setIsRecording] = useState(false)
@@ -41,12 +40,10 @@ export function NewNoteCard({ onNoteCreated }: newNoteCardProps) {
     }
 
     function handleStartRecording() {
-
         const isSpeechRecognitionAPIAvailable = 'SpeechRecognition' in window || 'webkitSpeechRecognition' in window
 
         if (!isSpeechRecognitionAPIAvailable) {
             alert("Infelizmente seu navegador nao suporta a API de gravação");
-
             return
         }
 
